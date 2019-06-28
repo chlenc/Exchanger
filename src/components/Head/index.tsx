@@ -20,7 +20,7 @@ export default class Head extends React.Component<IProps> {
         return <div className={styles.bg}>
             <div className={styles.h}>
                 <div className={styles.header}>
-                    <div className={styles.header_logoFont}>WAVES to WBTC</div>
+                    <div className={styles.header_logoFont}>Lorem ipsum dolor</div>
                     {
                         wavesKeeperAccount
                             ? <div className={styles.header_sign}>
@@ -35,16 +35,11 @@ export default class Head extends React.Component<IProps> {
                 </div>
                 <div className={styles.body}>
                     <div className={styles.info}>
-                        <div className={styles.headerFont}>Borrow WBTC for WAVES instantly</div>
-                        <div className={styles.captionFont}>Want to get some interesting tokens without selling your
-                            stake? We provide you with an ability to instantly borrow coins on loan terms set in a smart
-                            contract on the decentralized Waves network.
+                        <div className={styles.headerFont}>Lorem ipsum dolor</div>
+                        <div className={styles.captionFont}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </div>
-                        {/*{[*/}
-                            {/*'Affordable interest rates',*/}
-                            {/*'Reliable and safe',*/}
-                            {/*'Simple process of borrowing and repayment',*/}
-                        {/*].map((item, i) => <ListItem key={i} text={item}/>)}*/}
                     </div>
                     <div className={styles.form}>
                         <Form/>
@@ -55,10 +50,3 @@ export default class Head extends React.Component<IProps> {
         </div>;
     }
 }
-
-const ListItem = ({text}) =>
-    <div className={styles.itemFont}>
-        <div className={styles.handIcon}/>
-        {text}
-    </div>;
-

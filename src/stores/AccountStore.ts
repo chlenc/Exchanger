@@ -99,9 +99,6 @@ class AccountStore extends SubStore {
             publicState.account
                 ? this.updateWavesKeeperAccount(publicState.account)
                 : this.resetWavesKeeperAccount();
-            if (publicState.account && publicState.account.address) {
-                this.rootStore.dappStore.updateLoanDetails(publicState.account.address);
-            }
         } else {
             this.wavesKeeperAccount = publicState.account;
         }
@@ -152,10 +149,6 @@ class AccountStore extends SubStore {
 
     login = async () => {
         const resp = window['WavesKeeper'].publicState();
-        const publicState = await resp;
-        if (publicState.account && publicState.account.address) {
-            this.rootStore.dappStore.updateLoanDetails(publicState.account.address);
-        }
         return resp;
     };
 

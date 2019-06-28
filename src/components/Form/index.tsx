@@ -1,11 +1,12 @@
 import React from 'react';
-import AccountStore from '@stores/AccountStore';
+import styles from './styles.scss';
+import SignBtn from '@components/SignBtn';
 import { inject, observer } from 'mobx-react';
-import FreedForm from '@components/Form/FreedForm';
-import LoanedForm, { TDetails } from '@components/Form/LoanedForm';
-import DappStore from '@stores/DappStore';
+import { AccountStore, DappStore } from '@stores';
 
 interface IState {
+    isWavesToken: boolean,
+    tokensCount: number
 }
 
 interface IProps {
@@ -13,57 +14,86 @@ interface IProps {
     dappStore?: DappStore
 }
 
-const m = 100000000;
-
-
 @inject('accountStore', 'dappStore')
 @observer
-export default class Form extends React.Component<IProps, IState> {
+export default class FreedForm extends React.Component<IProps, IState> {
 
-
-    handleGetLoan = (u: number) => {
-        const {wavesKeeperAccount} = this.props.accountStore!;
-
-        if (wavesKeeperAccount && ((+wavesKeeperAccount.balance.available / m) - 0.1) >= m) {
-            this.props.dappStore!.borrow(u);
-        }else {
-            alert('insufficient funds');
-        }
+    state: IState = {
+        isWavesToken: true,
+        tokensCount: 0
     };
-    handleReturnLoan = () => this.props.dappStore!.buyBack();
+
+    private handleChangeTokensCount = (e) => this.setState({tokensCount: +e.target.value})
+
+    private handleExchange = () => this.props.dappStore!.exchange(this.state.tokensCount, this.state.isWavesToken);
+
+    private handleOnWavesToken = () => this.setState({isWavesToken: true});
+
+    private handleOffWavesToken = () => this.setState({isWavesToken: false});
+
+    handleFocus = (e) => e.target.select();
 
     render(): React.ReactNode {
-        const {wavesKeeperAccount, isApplicationAuthorizedInWavesKeeper: isLogin} = this.props.accountStore!;
-        const {
-            isLoaned, interestPeriod, maxTokenCount,
-            currentRate, gracePeriod, start, height, deposit, lend, end_of_freeze, rate
-        } = this.props.dappStore!;
-        const details: TDetails | null = end_of_freeze != null
-            ? {
-                rate: +rate!,
-                start: +start!,
-                end_of_freeze: +end_of_freeze,
-                deposit: +deposit!,
-                lend: +lend!,
-            } : null
-        ;
-        return isLogin && isLoaned && wavesKeeperAccount != null && details != null
-            ? <LoanedForm
-                onReturnLoan={this.handleReturnLoan}
-                grace={gracePeriod}
-                height={+height}
-                interestPeriod={interestPeriod}
-                balance={+wavesKeeperAccount.balance.available}
-                details={details}
-            />
-            : <FreedForm
-                interestPeriod={interestPeriod}
-                maxTokenCount={maxTokenCount}
-                onGetLoan={this.handleGetLoan}
-                isLogin={isLogin}
-                rate={currentRate}
-                balance={wavesKeeperAccount ? wavesKeeperAccount.balance.available : undefined}
-                grace={gracePeriod}
-            />;
+        const {isWavesToken, tokensCount} = this.state;
+        const {isApplicationAuthorizedInWavesKeeper: isLogin} = this.props.accountStore!;
+        return <div className={styles.root}>
+
+            <div>
+                <div className={styles.header1Font}>Loan calculator</div>
+                <div className={styles.calculateField_col}>
+                    <div className={styles.header2Font}>
+                        Amount for exchange
+                    </div>
+                    <div className={styles.captionFont}>You pay</div>
+                    <div className={styles.inputField}>
+                        {isWavesToken ? <div className={styles.wavesIcn}/> : <div className={styles.btcIcn}/>}
+                        <input
+                            type="number"
+                            onChange={this.handleChangeTokensCount}
+                            onFocus={this.handleFocus}
+                            value={tokensCount}
+                        />
+                    </div>
+                </div>
+                <div className={styles.termInfField}>
+                    <div className={styles.header2Font}>Choose token:</div>
+                    <div className={styles.termInfField_buttonSet}>
+                        <button
+                            onClick={this.handleOnWavesToken}
+                            className={isWavesToken ? styles.leftCheckbox_selected : styles.leftCheckbox}
+                        >
+                            WAVES TOKEN
+                        </button>
+                        <button
+                            onClick={this.handleOffWavesToken}
+                            className={isWavesToken ? styles.rightCheckbox : styles.rightCheckbox_selected}
+                        >
+                            UNISWAP TOKEN
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+
+                <div className={styles.yellowCaption}>To take a loan you have to sign in first</div>
+                <div className={styles.btnField}>
+                    <SignBtn>
+                        <button
+                            disabled={isLogin}
+                            className={styles.submitBnt}>
+                            Sign in with Keeper
+                        </button>
+                    </SignBtn>
+                    <button
+                        disabled={!isLogin}
+                        className={styles.submitBnt}
+                        onClick={this.handleExchange}
+                    >
+                        Exchange
+                    </button>
+                </div>
+            </div>
+        </div>;
     }
 }
