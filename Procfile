@@ -1,1 +1,1 @@
-web node ./scripts/start.js
+worker node ./scripts/start.js
