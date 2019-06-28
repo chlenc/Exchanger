@@ -5,6 +5,8 @@ import { RootStore } from '@stores';
 const DAPP_ADDRESS = '3N4w7wVkViML11XdFL5xNkPofVVg1nLWEmX';
 const DAPP_ASSET = 'GhAFhXzwCYfvcXQ3GHFaQFnCzAuYCT156qFqiYyzfkzv';
 
+const m = 1e8;
+
 class DappStore extends SubStore {
     @observable height: number = 0;
 
@@ -28,6 +30,8 @@ class DappStore extends SubStore {
             }
         }).then((tx) => {
             console.log(tx);
+            alert(`Paid off: ${JSON.parse(tx)['trace'][0]['result']['transfers'][0]['amount'] / m} ${isWaves
+                ? 'uniswap' : 'WAVES'}`);
         }).catch((error) => {
             alert(error.message);
         });
