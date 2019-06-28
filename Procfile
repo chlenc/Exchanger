@@ -1,1 +1,1 @@
-worker node ./scripts/start.js
+npm start
