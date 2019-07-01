@@ -18,6 +18,7 @@ class App extends Component<IProps> {
 
     componentDidMount(): void {
         console.log('this app worked in testNet node');
+        this.props.dappStore!.updatePrice();
         this.props.accountStore!.setupWavesKeeper();
     }
 

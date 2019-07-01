@@ -23,7 +23,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
         tokensCount: 0
     };
 
-    private handleChangeTokensCount = (e) => this.setState({tokensCount: +e.target.value})
+    private handleChangeTokensCount = (e) => this.setState({tokensCount: +e.target.value});
 
     private handleExchange = () => this.props.dappStore!.exchange(this.state.tokensCount, this.state.isWavesToken);
 
@@ -39,7 +39,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
         return <div className={styles.root}>
 
             <div>
-                <div className={styles.header1Font}>Текущий курс Liquid/Waves:</div>
+                <div className={styles.header1Font}>Title</div>
                 <div className={styles.calculateField_col}>
                     <div className={styles.header2Font}>
                         Сумма для обмена
@@ -57,7 +57,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                 </div>
                 <div className={styles.termInfField}>
                     <div className={styles.header2Font}>Выберете токен:</div>
-                    
+
                     <div className={styles.termInfField_buttonSet}>
                         <button
                             onClick={this.handleOnWavesToken}
@@ -65,7 +65,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                         >
                             WAVES
                         </button>
-                        
+
                         <button
                             onClick={this.handleOffWavesToken}
                             className={isWavesToken ? styles.rightCheckbox : styles.rightCheckbox_selected}
@@ -77,6 +77,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
 
             </div>
             <div>
+                <div className={styles.header2Font}>Текущий курс Liquid/Waves: {this.props.dappStore!.actualPrice}</div>
 
                 <div className={styles.yellowCaption}>Для операции обмена вам необходимо подписать транзакцию</div>
                 <div className={styles.btnField}>
