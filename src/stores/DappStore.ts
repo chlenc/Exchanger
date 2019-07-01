@@ -2,7 +2,7 @@ import { SubStore } from './SubStore';
 import { action, observable } from 'mobx';
 import { RootStore } from '@stores';
 
-const NODE_URL = 'https://testnodes.wavesnodes.com/addresses/data/3N4w7wVkViML11XdFL5xNkPofVVg1nLWEmX';
+const NODE_URL = 'https://testnodes.wavesnodes.com';
 const DAPP_ADDRESS = '3N4w7wVkViML11XdFL5xNkPofVVg1nLWEmX';
 const DAPP_ASSET = 'GhAFhXzwCYfvcXQ3GHFaQFnCzAuYCT156qFqiYyzfkzv';
 
@@ -10,11 +10,18 @@ const m = 1e8;
 
 class DappStore extends SubStore {
     @observable height: number = 0;
-    @observable wavesAmmount = 0;
-    @observable LiquidAmmount = 0;
+    @observable actualPrice: number = 0;
     constructor(rootStore: RootStore) {
         super(rootStore);
     }
+    
+
+    @action
+    updatePrice = async () => {
+        const wavesAmount = await (await fetch(`${NODE_URL}/addresses/data/3N4w7wVkViML11XdFL5xNkPofVVg1nLWEmX/wavesAmount`)).json();
+        const liquidAmount = await (await fetch(`${NODE_URL}/addresses/data/3N4w7wVkViML11XdFL5xNkPofVVg1nLWEmX/liquidAmount`)).json();
+        if (!wavesAmount.error && !liquidAmount.error ) this.actualPrice = liquidAmount.value/wavesAmount.value;
+    };
 
     @action
     exchange = (u: number, isWaves: boolean) => {
