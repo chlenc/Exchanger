@@ -20,7 +20,7 @@ export default class Head extends React.Component<IProps> {
         return <div className={styles.bg}>
             <div className={styles.h}>
                 <div className={styles.header}>
-                    <div className={styles.header_logoFont}>Lorem ipsum dolor</div>
+                    <div className={styles.header_logoFont}>Здесь можно обменять токены</div>
                     {
                         wavesKeeperAccount
                             ? <div className={styles.header_sign}>
@@ -35,10 +35,8 @@ export default class Head extends React.Component<IProps> {
                 </div>
                 <div className={styles.body}>
                     <div className={styles.info}>
-                        <div className={styles.headerFont}>Lorem ipsum dolor</div>
-                        <div className={styles.captionFont}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        <div className={styles.headerFont}>Тестовый обменник</div>
+                        <div className={styles.captionFont}>Реализация обменника с постоянной ликвидностью
                         </div>
                     </div>
                     <div className={styles.form}>

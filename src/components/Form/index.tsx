@@ -39,12 +39,12 @@ export default class FreedForm extends React.Component<IProps, IState> {
         return <div className={styles.root}>
 
             <div>
-                <div className={styles.header1Font}>Loan calculator</div>
+                <div className={styles.header1Font}>Текущий курс Liquid/Waves:</div>
                 <div className={styles.calculateField_col}>
                     <div className={styles.header2Font}>
-                        Amount for exchange
+                        Сумма для обмена
                     </div>
-                    <div className={styles.captionFont}>You pay</div>
+                    <div className={styles.captionFont}>Вы платите</div>
                     <div className={styles.inputField}>
                         {isWavesToken ? <div className={styles.wavesIcn}/> : <div className={styles.btcIcn}/>}
                         <input
@@ -56,19 +56,21 @@ export default class FreedForm extends React.Component<IProps, IState> {
                     </div>
                 </div>
                 <div className={styles.termInfField}>
-                    <div className={styles.header2Font}>Choose token:</div>
+                    <div className={styles.header2Font}>Выберете токен:</div>
+                    
                     <div className={styles.termInfField_buttonSet}>
                         <button
                             onClick={this.handleOnWavesToken}
                             className={isWavesToken ? styles.leftCheckbox_selected : styles.leftCheckbox}
                         >
-                            WAVES TOKEN
+                            WAVES
                         </button>
+                        
                         <button
                             onClick={this.handleOffWavesToken}
                             className={isWavesToken ? styles.rightCheckbox : styles.rightCheckbox_selected}
                         >
-                            UNISWAP TOKEN
+                            Liquid
                         </button>
                     </div>
                 </div>
@@ -76,13 +78,13 @@ export default class FreedForm extends React.Component<IProps, IState> {
             </div>
             <div>
 
-                <div className={styles.yellowCaption}>To take a loan you have to sign in first</div>
+                <div className={styles.yellowCaption}>Для операции обмена вам необходимо подписать транзакцию</div>
                 <div className={styles.btnField}>
                     <SignBtn>
                         <button
                             disabled={isLogin}
                             className={styles.submitBnt}>
-                            Sign in with Keeper
+                            Авторизироваться
                         </button>
                     </SignBtn>
                     <button
@@ -90,7 +92,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                         className={styles.submitBnt}
                         onClick={this.handleExchange}
                     >
-                        Exchange
+                        Обменять
                     </button>
                 </div>
             </div>
