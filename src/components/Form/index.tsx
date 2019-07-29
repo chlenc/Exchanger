@@ -38,7 +38,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
 
     private handleOffWavesToken = () => this.setState({isWavesToken: false});
 
-    round8 = (n) => n.toFixed(8);
+    round8 = (n) => n.toFixed(8).floor();
 
 
     private get wavesAmount() {
