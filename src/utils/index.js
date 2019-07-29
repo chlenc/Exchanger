@@ -101,3 +101,9 @@ export function copyToClipboard(value) {
 
   return result;
 }
+
+export function floorPlus(x, n) { //x - число, n - количество знаков
+  if(isNaN(x) || isNaN(n)) return 0;
+  const m = Math.pow(10,n);
+  return Math.floor(x*m)/m;
+}

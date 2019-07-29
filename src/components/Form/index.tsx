@@ -4,6 +4,7 @@ import SignBtn from '@components/SignBtn';
 import { inject, observer } from 'mobx-react';
 import { AccountStore, DappStore } from '@stores';
 import PriceInfo from '@components/Form/PriceInfo';
+import { floorPlus } from '@utils';
 
 const m = 1e8;
 
@@ -46,9 +47,6 @@ export default class FreedForm extends React.Component<IProps, IState> {
 
     private handleOffWavesToken = () => this.setState({isWavesToken: false});
 
-    round8 = (n) => n.toFixed(8);
-
-
     private get wavesAmount() {
         const {liquidAmount, wavesAmount} = this.props.dappStore!;
         const {tokensCount} = this.state;
@@ -68,12 +66,12 @@ export default class FreedForm extends React.Component<IProps, IState> {
         const tokensCount = +this.state.tokensCount;
         const minPrice = +this.state.minPrice;
         const {isApplicationAuthorizedInWavesKeeper: isLogin} = this.props.accountStore!;
-        const payment = this.round8(isWavesToken ? this.wavesAmount : this.liquidAmount);
+        const payment = floorPlus(isWavesToken ? this.wavesAmount : this.liquidAmount, 8);
         let price = 0;
         if (isWavesToken && payment !== 0 && (+tokensCount) !== 0) {
-            price = this.round8(tokensCount / payment);
+            price = floorPlus(tokensCount / payment, 8);
         } else if (!isWavesToken && payment !== 0 && tokensCount !== 0) {
-            price = this.round8(payment / tokensCount);
+            price = floorPlus(payment / tokensCount, 8);
         }
         const minAmount = isWavesToken
             ? (minPrice === 0 ? 0 : tokensCount / minPrice)
@@ -157,7 +155,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                 <div className={styles.rateField_row}>
                     Min amount:
                     <div className={styles.rateFont}>
-                        <b className={styles.rateCount}>{this.round8(minAmount)}</b> &nbsp;
+                        <b className={styles.rateCount}>{floorPlus(minAmount, 8)}</b> &nbsp;
                         <div className={styles.rateFont_btc}>LIQUID</div>
                     </div>
                 </div>
