@@ -39,8 +39,8 @@ export default class Head extends React.Component<IProps> {
                     <div className={styles.header_logoFont}>Demo version of exchanger with constant liquidity
                              You can learn more about the state of dApp in Waves Explorer</div>
                         <a className={styles.header_logoFont}
-              
-                            href={`https://wavesexplorer.com/address/${DAPP_ADDRESS}`}>Explorer link</a>
+
+                            href={`https://wavesexplorer.com/address/${DAPP_ADDRESS}`}>Waves Explorer</a>
                     </div>
                     <div className={styles.form}>
                         <Form/>
