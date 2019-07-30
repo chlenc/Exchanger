@@ -6,7 +6,7 @@ export default class PriceInfo extends  React.Component{
     render(): React.ReactNode {
         return <Tooltip placement="bottomRight" trigger="hover" align={{offset: [34, 0]}}
                         overlay={<div className={styles.captionFont}>
-                        The price may change in time the transaction get into the blockchain. To avoid an unfavorable exchange rate, specify the acceptable ratio below.
+                        The price may change in time the transaction gets into the blockchain. To avoid an unfavorable exchange rate specify the acceptable ratio below.
                         </div>}
         >
                 <div className={styles.btcHelpIcn}/>

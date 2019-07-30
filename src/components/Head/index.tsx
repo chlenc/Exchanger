@@ -30,15 +30,22 @@ export default class Head extends React.Component<IProps> {
                             </div>
                             : <SignBtn className={styles.header_sign}>
                                 
-                                Sign in with Keeper
+                                Log in
                             </SignBtn>
                     }
                 </div>
                 <div className={styles.body}>
                     <div className={styles.info}>
-                    <div className={styles.header_logoFont}><h2>Exchanger with constant liquidity</h2>Demo version of exchanger with constant liquidity. You can learn more about the script, state or transactions of this dApp in <a className={styles.header_logoFont}
-
-href={`https://wavesexplorer.com/address/${DAPP_ADDRESS}`}>Waves Explorer</a></div>
+                    <div className={styles.header_logoFont}><h2>Exchanger with constant liquidity</h2>
+                    <h3>How does it work:</h3>
+                    
+                    1. Exchanger-dApp has two types of tokens, their ratio is the current exchange rate<br /><br />
+                    2. dApp keeps the constant product of tokens' amount<br /><br />
+                    3. The amount of tokens that you receive depends on your payment and it's calculated according to point 2<br /><br />
+                    
+                    You can learn more about the script, state or transactions of this dApp in  <a> </a>
+                    <a className={styles.header_logoFont}
+                     href={`https://wavesexplorer.com/address/${DAPP_ADDRESS}`}>Waves Explorer</a></div>
                        
                     </div>
                     <div className={styles.form}>
