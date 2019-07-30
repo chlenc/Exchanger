@@ -46,7 +46,6 @@ href={`https://wavesexplorer.com/address/${DAPP_ADDRESS}`}>Waves Explorer</a></d
                     </div>
                 </div>
             </div>
-            <div className={styles.footer}/>
         </div>;
     }
 }
