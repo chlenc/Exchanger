@@ -21,7 +21,7 @@ export default class Head extends React.Component<IProps> {
         return <div className={styles.bg}>
             <div className={styles.h}>
                 <div className={styles.header}>
-                    <div className={styles.header_logoFont}>Exchanger with constant liquidity</div>
+                    <div className={styles.header_logoFont}></div>
                     {
                         wavesKeeperAccount
                             ? <div className={styles.header_sign}>
@@ -29,14 +29,14 @@ export default class Head extends React.Component<IProps> {
                                 {wavesKeeperAccount.address}
                             </div>
                             : <SignBtn className={styles.header_sign}>
-                                <div className={styles.header_signIcon}/>
+                                
                                 Sign in with Keeper
                             </SignBtn>
                     }
                 </div>
                 <div className={styles.body}>
                     <div className={styles.info}>
-                    <div className={styles.header_logoFont}>Demo version of exchanger with constant liquidity. You can learn more about the script, state or transactions of this dApp in <a className={styles.header_logoFont}
+                    <div className={styles.header_logoFont}><h2>Exchanger with constant liquidity</h2>Demo version of exchanger with constant liquidity. You can learn more about the script, state or transactions of this dApp in <a className={styles.header_logoFont}
 
 href={`https://wavesexplorer.com/address/${DAPP_ADDRESS}`}>Waves Explorer</a></div>
                        
