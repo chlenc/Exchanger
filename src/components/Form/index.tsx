@@ -102,7 +102,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                 <div className={styles.borderBottom}>
                     <div className={styles.calculateField_col}>
                         <div className={styles.header2Font}>
-                            Exchange amount
+                            Exchange amount:
                         </div>
                         <div className={styles.captionFont}>You pay</div>
                         <div className={styles.inputField}>
