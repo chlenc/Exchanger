@@ -101,8 +101,10 @@ export default class FreedForm extends React.Component<IProps, IState> {
                 </div>
                 <div className={styles.borderBottom}>
                     <div className={styles.calculateField_col}>
-                      
-                        <div className={styles.captionFont}>You pay</div>
+                    {isWavesToken ?
+                        <div className={styles.captionFont}>You pay WAVES</div>:
+                        <div className={styles.captionFont}>You pay Liquid</div>
+                    }
                         <div className={styles.inputField}>
                             {isWavesToken ? <div className={styles.wavesIcn}/> : <div className={styles.btcIcn}/>}
                             <input
