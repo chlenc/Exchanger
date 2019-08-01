@@ -116,6 +116,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                         </div>
                         <br/>
                         <div className={styles.rateField_row}>
+
                             Price
                             <div className={styles.rateFont}>
                                 <b className={styles.rateCount}>~&nbsp;{price}</b> &nbsp;
@@ -153,7 +154,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                 </div>
                 <br/>
                 <div className={styles.rateField_row}>
-                    Min amount
+                    Minimal tokens' amount  you receive
                     <div className={styles.rateFont}>
                         <b className={styles.rateCount}>{floorPlus(minAmount, 8)}</b> &nbsp;
                         <div className={styles.rateFont_btc}>LIQUID</div>
