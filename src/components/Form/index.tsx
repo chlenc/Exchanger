@@ -79,31 +79,29 @@ export default class FreedForm extends React.Component<IProps, IState> {
         return <div className={styles.root}>
 
             <div>
-                <div className={styles.header1Font}>Exchanger</div>
+                <div className={styles.header1Font}>Exchanger<sup> DEMO</sup></div>
                 <div className={styles.termInfField}>
-                    <div className={styles.header2Font}>Choose token you pay:</div>
+                    
 
                     <div className={styles.termInfField_buttonSet}>
                         <button
                             onClick={this.handleOnWavesToken}
                             className={isWavesToken ? styles.leftCheckbox_selected : styles.leftCheckbox}
                         >
-                            WAVES
+                            BUY LIQUID
                         </button>
 
                         <button
                             onClick={this.handleOffWavesToken}
                             className={isWavesToken ? styles.rightCheckbox : styles.rightCheckbox_selected}
                         >
-                            LIQUID
+                            BUY WAVES
                         </button>
                     </div>
                 </div>
                 <div className={styles.borderBottom}>
                     <div className={styles.calculateField_col}>
-                        <div className={styles.header2Font}>
-                            Exchange amount:
-                        </div>
+                      
                         <div className={styles.captionFont}>You pay</div>
                         <div className={styles.inputField}>
                             {isWavesToken ? <div className={styles.wavesIcn}/> : <div className={styles.btcIcn}/>}
@@ -116,7 +114,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                         </div>
                         <br/>
                         <div className={styles.rateField_row}>
-                            Price:
+                            Price
                             <div className={styles.rateFont}>
                                 <b className={styles.rateCount}>~&nbsp;{price}</b> &nbsp;
                                 <div className={styles.rateFont_btc}>LIQUID</div>
@@ -125,7 +123,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                             </div>
                         </div>
                         <div className={styles.rateField_row}>
-                            You get:
+                            You get
                             <div className={styles.rateFont}>
                                 <b className={styles.rateCount}>~&nbsp;{payment}</b> &nbsp;
                                 {isWavesToken ?
@@ -153,7 +151,7 @@ export default class FreedForm extends React.Component<IProps, IState> {
                 </div>
                 <br/>
                 <div className={styles.rateField_row}>
-                    Min amount:
+                    Min amount
                     <div className={styles.rateFont}>
                         <b className={styles.rateCount}>{floorPlus(minAmount, 8)}</b> &nbsp;
                         <div className={styles.rateFont_btc}>LIQUID</div>
