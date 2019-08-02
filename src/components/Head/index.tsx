@@ -55,7 +55,7 @@ export default class Head extends React.Component<IProps> {
                     4. Log in and exchange!<br /><br/>
 
                     You are welcome to ask any questions at the <a> </a>
-                      <a className={styles.header_logoFont} href={`https://forum.wavesplatform.com/t/exchanger-with-constant-liquidity-demo/16029`}>forum.</a> 
+                      <a className={styles.header_logoFont} href={`https://forum.wavesplatform.com/t/exchanger-with-constant-liquidity-demo/16029`}>forum</a> 
                       </div>
 
                     </div>
